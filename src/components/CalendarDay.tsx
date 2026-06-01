@@ -10,6 +10,7 @@ interface CalendarDayProps {
   data: MatchData;
   isToday: boolean;
   isCurrentMonth: boolean;
+  viewMode: 'classic' | 'compact';
 }
 
 export default function CalendarDay({
@@ -18,15 +19,21 @@ export default function CalendarDay({
   data,
   isToday,
   isCurrentMonth,
+  viewMode,
 }: CalendarDayProps) {
   if (day === null) {
     return <div className="min-h-[100px] rounded-lg bg-white/[0.02] border border-white/[0.04]" />;
   }
 
-  // A day is a knockout TBD day if we have matches and all of them are knockout and TBD
+  // A day is a knockout TBD day if we have matches and all of them are knockout and TBD (no country flag)
   const isKnockoutTBDDay =
     matches.length > 0 &&
-    matches.every((m) => m.stage !== 'Group Stage' && m.home === 'TBD');
+    matches.every(
+      (m) =>
+        m.stage !== 'Group Stage' &&
+        m.stage !== 'First Stage' &&
+        (m.home === 'TBD' || !data.flags[m.home])
+    );
 
   const firstMatch = matches[0];
   const stageColor = firstMatch ? (stageColors[firstMatch.stage] ?? '#CAFF00') : '#CAFF00';
@@ -62,7 +69,7 @@ export default function CalendarDay({
         ) : (
           <div className="flex flex-col gap-1 justify-center flex-1">
             {matches.map((m) => (
-              <MatchCard key={m.id} match={m} data={data} />
+              <MatchCard key={m.id} match={m} data={data} viewMode={viewMode} />
             ))}
           </div>
         )}

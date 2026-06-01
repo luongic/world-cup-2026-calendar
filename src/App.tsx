@@ -27,9 +27,31 @@ const localTz = getLocalTimezoneString();
 
 function convertMatchesToLocalTime(matches: Match[]): Match[] {
   return matches.map((m) => {
-    if (m.time === 'TBD' || m.date === 'TBD') {
+    if (m.time === 'TBD' || m.date === 'TBD' || !m.time) {
       return m;
     }
+
+    try {
+      // Check if time is in ISO format (e.g. 2026-06-11T19:00:00Z)
+      const dateParsed = Date.parse(m.time);
+      if (!isNaN(dateParsed)) {
+        const utcDate = new Date(dateParsed);
+        const localYear = utcDate.getFullYear();
+        const localMonth = String(utcDate.getMonth() + 1).padStart(2, '0');
+        const localDay = String(utcDate.getDate()).padStart(2, '0');
+        const localHours = String(utcDate.getHours()).padStart(2, '0');
+        const localMinutes = String(utcDate.getMinutes()).padStart(2, '0');
+
+        return {
+          ...m,
+          date: `${localYear}-${localMonth}-${localDay}`,
+          time: `${localHours}:${localMinutes} (${localTz})`,
+        };
+      }
+    } catch (e) {
+      // fallback
+    }
+
     const timeParts = m.time.match(/^(\d{2}):(\d{2})\s*ET$/);
     if (!timeParts) return m;
 

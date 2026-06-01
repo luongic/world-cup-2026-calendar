@@ -22,7 +22,7 @@ export default function KnockoutBadge({ stage, color, matches }: KnockoutBadgePr
   } else if (stage === 'Semi-final') {
     title = 'SEMI';
     subtitle = 'FINALS';
-  } else if (stage === 'Third Place') {
+  } else if (stage === 'Third Place' || stage === 'Play-off for third place') {
     title = 'THIRD';
     subtitle = 'PLACE';
   } else if (stage === 'Final') {

@@ -3,6 +3,7 @@ import type { Match, MatchData } from '../types';
 interface MatchCardProps {
   match: Match;
   data: MatchData;
+  viewMode?: 'classic' | 'compact';
 }
 
 export const stageColors: Record<string, string> = {
@@ -11,6 +12,7 @@ export const stageColors: Record<string, string> = {
   'Quarter-final': '#FF6B35', // orange
   'Semi-final': '#FF2D90', // pink
   'Third Place': '#A855F7', // purple
+  'Play-off for third place': '#A855F7', // purple
   Final: '#FFD700', // gold
 };
 
@@ -26,13 +28,13 @@ function flagEmojiToCountryCode(emoji: string): string {
   return chars.join('').toLowerCase();
 }
 
-export default function MatchCard({ match, data }: MatchCardProps) {
+export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCardProps) {
   const groupColor = match.group
     ? data.groups[match.group]?.color
     : (stageColors[match.stage] ?? '#888');
   const homeFlag = data.flags[match.home] ?? '🏳️';
   const awayFlag = data.flags[match.away] ?? '🏳️';
-  const isKnockout = match.stage !== 'Group Stage';
+  const isKnockout = match.stage !== 'Group Stage' && match.stage !== 'First Stage';
   const isTBD = match.home === 'TBD';
 
   if (isKnockout && isTBD) {
@@ -53,6 +55,63 @@ export default function MatchCard({ match, data }: MatchCardProps) {
   const homeCC = flagEmojiToCountryCode(homeFlag);
   const awayCC = flagEmojiToCountryCode(awayFlag);
 
+  if (viewMode === 'compact') {
+    return (
+      <div
+        className="flex items-center justify-center gap-2 w-full hover:bg-white/5 rounded transition-colors duration-150 cursor-pointer select-none"
+        style={{
+          paddingTop: '3px',
+          paddingBottom: '3px',
+          paddingLeft: '4px',
+          paddingRight: '4px',
+        }}
+      >
+        {/* Home Flag */}
+        <div className="relative flex items-center justify-center" title={match.home}>
+          {homeCC && (
+            <img
+              src={`https://flagcdn.com/w40/${homeCC}.png`}
+              alt={match.home}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const fallback = e.currentTarget.nextElementSibling;
+                if (fallback) fallback.classList.remove('hidden');
+              }}
+              className="w-[32px] h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+            />
+          )}
+          <span className={`${homeCC ? 'hidden' : ''} text-sm leading-none`}>
+            {homeFlag}
+          </span>
+        </div>
+
+        {/* Time in Middle (smaller than flags) */}
+        <span className="text-[11px] font-condensed font-bold text-white/70 select-none whitespace-nowrap px-1">
+          {match.time.split(' ')[0]}
+        </span>
+
+        {/* Away Flag */}
+        <div className="relative flex items-center justify-center" title={match.away}>
+          {awayCC && (
+            <img
+              src={`https://flagcdn.com/w40/${awayCC}.png`}
+              alt={match.away}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                const fallback = e.currentTarget.nextElementSibling;
+                if (fallback) fallback.classList.remove('hidden');
+              }}
+              className="w-[32px] h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+            />
+          )}
+          <span className={`${awayCC ? 'hidden' : ''} text-sm leading-none`}>
+            {awayFlag}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className="flex items-center justify-between w-full gap-1 hover:bg-white/5 rounded transition-colors duration-150 cursor-pointer select-none"
@@ -72,7 +131,7 @@ export default function MatchCard({ match, data }: MatchCardProps) {
         ) : (
           <span className="text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
             (
-            {match.stage === 'Third Place'
+            {match.stage === 'Third Place' || match.stage === 'Play-off for third place'
               ? '3rd'
               : match.stage === 'Quarter-final'
                 ? 'QF'

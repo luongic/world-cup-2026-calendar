@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { Match, MatchData } from '../types';
 import CalendarDay from './CalendarDay';
 
@@ -18,14 +19,21 @@ const DAYS = [
   { short: 'SUN', full: 'SUNDAY' },
 ];
 
-export default function CalendarMonth({ year, month, matches, data }: CalendarMonthProps) {
+export default function CalendarMonth({
+  year,
+  month,
+  matches,
+  data,
+}: CalendarMonthProps) {
+  const [viewMode, setViewMode] = useState<'classic' | 'compact'>('compact');
   const today = new Date();
   const firstDay = new Date(year, month - 1, 1);
   // getDay() 0=Sun, convert to Mon-based: 0=Mon,...,6=Sun
   const startOffset = (firstDay.getDay() + 6) % 7;
   const daysInMonth = new Date(year, month, 0).getDate();
-  const monthName = new Date(year, month - 1, 1).toLocaleString('en-US', { month: 'long' }).toUpperCase();
-
+  const monthName = new Date(year, month - 1, 1)
+    .toLocaleString('en-US', { month: 'long' })
+    .toUpperCase();
 
   // Build grid cells
   const cells: (number | null)[] = [
@@ -44,9 +52,44 @@ export default function CalendarMonth({ year, month, matches, data }: CalendarMo
   return (
     <section className="mb-12">
       {/* Month Header */}
-      <div className="flex items-baseline gap-4 mb-6">
-        <h2 className="font-display text-7xl text-white leading-none tracking-tight">{monthName}</h2>
-        <span className="font-condensed text-2xl text-white/20 font-bold">{year}</span>
+      <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
+        <div className="flex items-baseline gap-4">
+          <h2 className="font-display text-7xl text-white leading-none tracking-tight">
+            {monthName}
+          </h2>
+          <span className="font-condensed text-2xl text-white/20 font-bold">
+            {year}
+          </span>
+        </div>
+
+        {/* View Mode Toggle */}
+        <div
+          className="flex bg-white/[0.03] border border-white/[0.08] p-1 rounded-full gap-1"
+          style={{ padding: 4 }}
+        >
+          <button
+            onClick={() => setViewMode('classic')}
+            className={`px-5 py-2 rounded-full text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+              viewMode === 'classic'
+                ? 'bg-[#CAFF00] text-black shadow-[0_0_12px_rgba(202,255,0,0.3)]'
+                : 'text-white/40 hover:text-white/80'
+            }`}
+            style={{ padding: 2 }}
+          >
+            Classic
+          </button>
+          <button
+            onClick={() => setViewMode('compact')}
+            className={`px-5 py-2 rounded-full text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+              viewMode === 'compact'
+                ? 'bg-[#CAFF00] text-black shadow-[0_0_12px_rgba(202,255,0,0.3)]'
+                : 'text-white/40 hover:text-white/80'
+            }`}
+            style={{ padding: 2 }}
+          >
+            Compact
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
@@ -80,6 +123,7 @@ export default function CalendarMonth({ year, month, matches, data }: CalendarMo
                 today.getDate() === day
               }
               isCurrentMonth={true}
+              viewMode={viewMode}
             />
           ))}
         </div>
