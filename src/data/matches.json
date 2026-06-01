@@ -1,0 +1,1104 @@
+{
+  "groups": {
+    "A": {
+      "color": "#FF6B35",
+      "teams": ["Mexico", "South Africa", "South Korea", "Czechia"]
+    },
+    "B": {
+      "color": "#4ECDC4",
+      "teams": ["Canada", "Bosnia and Herzegovina", "Switzerland", "Qatar"]
+    },
+    "C": {
+      "color": "#45B7D1",
+      "teams": ["Brazil", "Morocco", "Scotland", "Haiti"]
+    },
+    "D": {
+      "color": "#F7DC6F",
+      "teams": ["USA", "Paraguay", "Türkiye", "Australia"]
+    },
+    "E": {
+      "color": "#BB8FCE",
+      "teams": ["Germany", "Curaçao", "Ivory Coast", "Ecuador"]
+    },
+    "F": {
+      "color": "#82E0AA",
+      "teams": ["Netherlands", "Japan", "Tunisia", "Sweden"]
+    },
+    "G": {
+      "color": "#F0B27A",
+      "teams": ["Belgium", "Egypt", "Iran", "New Zealand"]
+    },
+    "H": {
+      "color": "#85C1E9",
+      "teams": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"]
+    },
+    "I": {
+      "color": "#F1948A",
+      "teams": ["France", "Senegal", "Iraq", "Norway"]
+    },
+    "J": {
+      "color": "#A9DFBF",
+      "teams": ["Argentina", "Algeria", "Austria", "Jordan"]
+    },
+    "K": {
+      "color": "#FAD7A0",
+      "teams": ["Portugal", "Congo DR", "Uzbekistan", "Colombia"]
+    },
+    "L": {
+      "color": "#AED6F1",
+      "teams": ["England", "Croatia", "Ghana", "Panama"]
+    }
+  },
+  "flags": {
+    "Mexico": "🇲🇽",
+    "South Africa": "🇿🇦",
+    "South Korea": "🇰🇷",
+    "Czechia": "🇨🇿",
+    "Canada": "🇨🇦",
+    "Bosnia and Herzegovina": "🇧🇦",
+    "Switzerland": "🇨🇭",
+    "Qatar": "🇶🇦",
+    "Brazil": "🇧🇷",
+    "Morocco": "🇲🇦",
+    "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "Haiti": "🇭🇹",
+    "USA": "🇺🇸",
+    "Paraguay": "🇵🇾",
+    "Türkiye": "🇹🇷",
+    "Australia": "🇦🇺",
+    "Germany": "🇩🇪",
+    "Curaçao": "🇨🇼",
+    "Ivory Coast": "🇨🇮",
+    "Ecuador": "🇪🇨",
+    "Netherlands": "🇳🇱",
+    "Japan": "🇯🇵",
+    "Tunisia": "🇹🇳",
+    "Sweden": "🇸🇪",
+    "Belgium": "🇧🇪",
+    "Egypt": "🇪🇬",
+    "Iran": "🇮🇷",
+    "New Zealand": "🇳🇿",
+    "Spain": "🇪🇸",
+    "Cape Verde": "🇨🇻",
+    "Saudi Arabia": "🇸🇦",
+    "Uruguay": "🇺🇾",
+    "France": "🇫🇷",
+    "Senegal": "🇸🇳",
+    "Iraq": "🇮🇶",
+    "Norway": "🇳🇴",
+    "Argentina": "🇦🇷",
+    "Algeria": "🇩🇿",
+    "Austria": "🇦🇹",
+    "Jordan": "🇯🇴",
+    "Portugal": "🇵🇹",
+    "Congo DR": "🇨🇩",
+    "Uzbekistan": "🇺🇿",
+    "Colombia": "🇨🇴",
+    "England": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "Croatia": "🇭🇷",
+    "Ghana": "🇬🇭",
+    "Panama": "🇵🇦"
+  },
+  "matches": [
+    {
+      "id": 1,
+      "date": "2026-06-11",
+      "group": "A",
+      "home": "Mexico",
+      "away": "South Africa",
+      "venue": "Mexico City",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 2,
+      "date": "2026-06-11",
+      "group": "A",
+      "home": "South Korea",
+      "away": "Czechia",
+      "venue": "Guadalajara",
+      "time": "22:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 3,
+      "date": "2026-06-12",
+      "group": "B",
+      "home": "Canada",
+      "away": "Bosnia and Herzegovina",
+      "venue": "Toronto",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 4,
+      "date": "2026-06-12",
+      "group": "D",
+      "home": "USA",
+      "away": "Paraguay",
+      "venue": "Los Angeles",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 5,
+      "date": "2026-06-13",
+      "group": "B",
+      "home": "Qatar",
+      "away": "Switzerland",
+      "venue": "San Francisco",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 6,
+      "date": "2026-06-13",
+      "group": "C",
+      "home": "Brazil",
+      "away": "Morocco",
+      "venue": "New York/NJ",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 7,
+      "date": "2026-06-13",
+      "group": "C",
+      "home": "Haiti",
+      "away": "Scotland",
+      "venue": "Boston",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 8,
+      "date": "2026-06-13",
+      "group": "D",
+      "home": "Australia",
+      "away": "Türkiye",
+      "venue": "Vancouver",
+      "time": "00:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 9,
+      "date": "2026-06-14",
+      "group": "E",
+      "home": "Germany",
+      "away": "Curaçao",
+      "venue": "Houston",
+      "time": "13:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 10,
+      "date": "2026-06-14",
+      "group": "F",
+      "home": "Netherlands",
+      "away": "Japan",
+      "venue": "Dallas",
+      "time": "16:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 11,
+      "date": "2026-06-14",
+      "group": "E",
+      "home": "Ivory Coast",
+      "away": "Ecuador",
+      "venue": "Philadelphia",
+      "time": "19:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 12,
+      "date": "2026-06-14",
+      "group": "F",
+      "home": "Tunisia",
+      "away": "Sweden",
+      "venue": "Monterrey",
+      "time": "22:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 13,
+      "date": "2026-06-15",
+      "group": "H",
+      "home": "Spain",
+      "away": "Cape Verde",
+      "venue": "Atlanta",
+      "time": "12:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 14,
+      "date": "2026-06-15",
+      "group": "G",
+      "home": "Belgium",
+      "away": "Egypt",
+      "venue": "Seattle",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 15,
+      "date": "2026-06-15",
+      "group": "H",
+      "home": "Saudi Arabia",
+      "away": "Uruguay",
+      "venue": "Miami",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 16,
+      "date": "2026-06-15",
+      "group": "G",
+      "home": "Iran",
+      "away": "New Zealand",
+      "venue": "Los Angeles",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 17,
+      "date": "2026-06-16",
+      "group": "I",
+      "home": "France",
+      "away": "Senegal",
+      "venue": "New York/NJ",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 18,
+      "date": "2026-06-16",
+      "group": "I",
+      "home": "Iraq",
+      "away": "Norway",
+      "venue": "Boston",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 19,
+      "date": "2026-06-16",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Algeria",
+      "venue": "Kansas City",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 20,
+      "date": "2026-06-16",
+      "group": "J",
+      "home": "Austria",
+      "away": "Jordan",
+      "venue": "San Francisco",
+      "time": "00:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 21,
+      "date": "2026-06-17",
+      "group": "K",
+      "home": "Portugal",
+      "away": "Congo DR",
+      "venue": "Houston",
+      "time": "13:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 22,
+      "date": "2026-06-17",
+      "group": "L",
+      "home": "England",
+      "away": "Croatia",
+      "venue": "Dallas",
+      "time": "16:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 23,
+      "date": "2026-06-17",
+      "group": "L",
+      "home": "Ghana",
+      "away": "Panama",
+      "venue": "Toronto",
+      "time": "19:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 24,
+      "date": "2026-06-17",
+      "group": "K",
+      "home": "Uzbekistan",
+      "away": "Colombia",
+      "venue": "Mexico City",
+      "time": "22:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 25,
+      "date": "2026-06-18",
+      "group": "A",
+      "home": "Czechia",
+      "away": "South Africa",
+      "venue": "Atlanta",
+      "time": "12:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 26,
+      "date": "2026-06-18",
+      "group": "B",
+      "home": "Switzerland",
+      "away": "Bosnia and Herzegovina",
+      "venue": "Los Angeles",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 27,
+      "date": "2026-06-18",
+      "group": "B",
+      "home": "Canada",
+      "away": "Qatar",
+      "venue": "Vancouver",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 28,
+      "date": "2026-06-18",
+      "group": "A",
+      "home": "Mexico",
+      "away": "South Korea",
+      "venue": "Guadalajara",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 29,
+      "date": "2026-06-19",
+      "group": "D",
+      "home": "USA",
+      "away": "Australia",
+      "venue": "Seattle",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 30,
+      "date": "2026-06-19",
+      "group": "C",
+      "home": "Scotland",
+      "away": "Morocco",
+      "venue": "Boston",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 31,
+      "date": "2026-06-19",
+      "group": "C",
+      "home": "Brazil",
+      "away": "Haiti",
+      "venue": "Philadelphia",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 32,
+      "date": "2026-06-19",
+      "group": "D",
+      "home": "Türkiye",
+      "away": "Paraguay",
+      "venue": "San Francisco",
+      "time": "00:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 33,
+      "date": "2026-06-20",
+      "group": "F",
+      "home": "Netherlands",
+      "away": "Sweden",
+      "venue": "Houston",
+      "time": "13:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 34,
+      "date": "2026-06-20",
+      "group": "E",
+      "home": "Germany",
+      "away": "Ivory Coast",
+      "venue": "Toronto",
+      "time": "16:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 35,
+      "date": "2026-06-20",
+      "group": "E",
+      "home": "Ecuador",
+      "away": "Curaçao",
+      "venue": "Kansas City",
+      "time": "20:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 36,
+      "date": "2026-06-20",
+      "group": "F",
+      "home": "Tunisia",
+      "away": "Japan",
+      "venue": "Monterrey",
+      "time": "00:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 37,
+      "date": "2026-06-21",
+      "group": "H",
+      "home": "Spain",
+      "away": "Saudi Arabia",
+      "venue": "Atlanta",
+      "time": "12:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 38,
+      "date": "2026-06-21",
+      "group": "G",
+      "home": "Belgium",
+      "away": "Iran",
+      "venue": "Los Angeles",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 39,
+      "date": "2026-06-21",
+      "group": "H",
+      "home": "Uruguay",
+      "away": "Cape Verde",
+      "venue": "Miami",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 40,
+      "date": "2026-06-21",
+      "group": "G",
+      "home": "New Zealand",
+      "away": "Egypt",
+      "venue": "Vancouver",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 41,
+      "date": "2026-06-22",
+      "group": "J",
+      "home": "Argentina",
+      "away": "Austria",
+      "venue": "Dallas",
+      "time": "13:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 42,
+      "date": "2026-06-22",
+      "group": "I",
+      "home": "France",
+      "away": "Iraq",
+      "venue": "Philadelphia",
+      "time": "17:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 43,
+      "date": "2026-06-22",
+      "group": "I",
+      "home": "Norway",
+      "away": "Senegal",
+      "venue": "New York/NJ",
+      "time": "20:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 44,
+      "date": "2026-06-22",
+      "group": "J",
+      "home": "Jordan",
+      "away": "Algeria",
+      "venue": "San Francisco",
+      "time": "23:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 45,
+      "date": "2026-06-23",
+      "group": "K",
+      "home": "Portugal",
+      "away": "Uzbekistan",
+      "venue": "Houston",
+      "time": "13:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 46,
+      "date": "2026-06-23",
+      "group": "L",
+      "home": "England",
+      "away": "Ghana",
+      "venue": "Boston",
+      "time": "16:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 47,
+      "date": "2026-06-23",
+      "group": "L",
+      "home": "Panama",
+      "away": "Croatia",
+      "venue": "Toronto",
+      "time": "19:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 48,
+      "date": "2026-06-23",
+      "group": "K",
+      "home": "Colombia",
+      "away": "Congo DR",
+      "venue": "Guadalajara",
+      "time": "22:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 49,
+      "date": "2026-06-24",
+      "group": "B",
+      "home": "Switzerland",
+      "away": "Canada",
+      "venue": "Vancouver",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 50,
+      "date": "2026-06-24",
+      "group": "B",
+      "home": "Bosnia and Herzegovina",
+      "away": "Qatar",
+      "venue": "Seattle",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 51,
+      "date": "2026-06-24",
+      "group": "C",
+      "home": "Brazil",
+      "away": "Scotland",
+      "venue": "Miami",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 52,
+      "date": "2026-06-24",
+      "group": "C",
+      "home": "Morocco",
+      "away": "Haiti",
+      "venue": "Atlanta",
+      "time": "18:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 53,
+      "date": "2026-06-24",
+      "group": "A",
+      "home": "Mexico",
+      "away": "Czechia",
+      "venue": "Mexico City",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 54,
+      "date": "2026-06-24",
+      "group": "A",
+      "home": "South Korea",
+      "away": "South Africa",
+      "venue": "Monterrey",
+      "time": "21:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 55,
+      "date": "2026-06-25",
+      "group": "E",
+      "home": "Ecuador",
+      "away": "Germany",
+      "venue": "New York/NJ",
+      "time": "16:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 56,
+      "date": "2026-06-25",
+      "group": "E",
+      "home": "Curaçao",
+      "away": "Ivory Coast",
+      "venue": "Philadelphia",
+      "time": "16:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 57,
+      "date": "2026-06-25",
+      "group": "F",
+      "home": "Tunisia",
+      "away": "Netherlands",
+      "venue": "Kansas City",
+      "time": "19:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 58,
+      "date": "2026-06-25",
+      "group": "F",
+      "home": "Japan",
+      "away": "Sweden",
+      "venue": "Dallas",
+      "time": "19:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 59,
+      "date": "2026-06-25",
+      "group": "D",
+      "home": "USA",
+      "away": "Türkiye",
+      "venue": "Los Angeles",
+      "time": "22:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 60,
+      "date": "2026-06-25",
+      "group": "D",
+      "home": "Paraguay",
+      "away": "Australia",
+      "venue": "San Francisco",
+      "time": "22:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 61,
+      "date": "2026-06-26",
+      "group": "I",
+      "home": "Norway",
+      "away": "France",
+      "venue": "Boston",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 62,
+      "date": "2026-06-26",
+      "group": "I",
+      "home": "Senegal",
+      "away": "Iraq",
+      "venue": "Toronto",
+      "time": "15:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 63,
+      "date": "2026-06-26",
+      "group": "H",
+      "home": "Uruguay",
+      "away": "Spain",
+      "venue": "Guadalajara",
+      "time": "20:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 64,
+      "date": "2026-06-26",
+      "group": "H",
+      "home": "Cape Verde",
+      "away": "Saudi Arabia",
+      "venue": "Houston",
+      "time": "20:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 65,
+      "date": "2026-06-26",
+      "group": "G",
+      "home": "New Zealand",
+      "away": "Belgium",
+      "venue": "Vancouver",
+      "time": "23:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 66,
+      "date": "2026-06-26",
+      "group": "G",
+      "home": "Egypt",
+      "away": "Iran",
+      "venue": "Seattle",
+      "time": "23:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 67,
+      "date": "2026-06-27",
+      "group": "L",
+      "home": "Panama",
+      "away": "England",
+      "venue": "New York/NJ",
+      "time": "17:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 68,
+      "date": "2026-06-27",
+      "group": "L",
+      "home": "Croatia",
+      "away": "Ghana",
+      "venue": "Philadelphia",
+      "time": "17:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 69,
+      "date": "2026-06-27",
+      "group": "K",
+      "home": "Colombia",
+      "away": "Portugal",
+      "venue": "Kansas City",
+      "time": "20:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 70,
+      "date": "2026-06-27",
+      "group": "K",
+      "home": "Congo DR",
+      "away": "Uzbekistan",
+      "venue": "Dallas",
+      "time": "20:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 71,
+      "date": "2026-06-27",
+      "group": "J",
+      "home": "Algeria",
+      "away": "Austria",
+      "venue": "Atlanta",
+      "time": "23:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 72,
+      "date": "2026-06-27",
+      "group": "J",
+      "home": "Jordan",
+      "away": "Argentina",
+      "venue": "Los Angeles",
+      "time": "23:00 ET",
+      "stage": "Group Stage"
+    },
+    {
+      "id": 73,
+      "date": "2026-06-28",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 74,
+      "date": "2026-06-28",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 75,
+      "date": "2026-06-29",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 76,
+      "date": "2026-06-29",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 77,
+      "date": "2026-06-30",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 78,
+      "date": "2026-06-30",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 79,
+      "date": "2026-07-01",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 80,
+      "date": "2026-07-01",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 81,
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 82,
+      "date": "2026-07-02",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 83,
+      "date": "2026-07-03",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 84,
+      "date": "2026-07-03",
+      "stage": "Round of 32",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 85,
+      "date": "2026-07-04",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 86,
+      "date": "2026-07-04",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 87,
+      "date": "2026-07-05",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 88,
+      "date": "2026-07-05",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 89,
+      "date": "2026-07-06",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 90,
+      "date": "2026-07-06",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 91,
+      "date": "2026-07-07",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 92,
+      "date": "2026-07-07",
+      "stage": "Round of 16",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 93,
+      "date": "2026-07-09",
+      "stage": "Quarter-final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 94,
+      "date": "2026-07-10",
+      "stage": "Quarter-final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 95,
+      "date": "2026-07-11",
+      "stage": "Quarter-final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 96,
+      "date": "2026-07-11",
+      "stage": "Quarter-final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 97,
+      "date": "2026-07-14",
+      "stage": "Semi-final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 98,
+      "date": "2026-07-15",
+      "stage": "Semi-final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "TBD",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 99,
+      "date": "2026-07-18",
+      "stage": "Third Place",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "Miami",
+      "time": "TBD",
+      "group": null
+    },
+    {
+      "id": 100,
+      "date": "2026-07-19",
+      "stage": "Final",
+      "home": "TBD",
+      "away": "TBD",
+      "venue": "New York/NJ",
+      "time": "15:00 ET",
+      "group": null
+    }
+  ]
+}
