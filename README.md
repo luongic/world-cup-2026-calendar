@@ -2,6 +2,8 @@
 
 > **🌐 Live Demo:** **[https://wc2026calendar.vercel.app/](https://wc2026calendar.vercel.app/)** 🚀
 
+![FIFA World Cup 2026 Calendar Preview](./public/preview.png)
+
 An interactive, responsive, and high-performance web dashboard displaying the complete **FIFA World Cup 2026 Schedule** (hosted across USA, Canada, and Mexico). The calendar highlights group stage fixtures, kickoff times converted dynamically to **your local timezone**, and utilizes custom-coded knockout stage sticker badges.
 
 This project is built using **Vite**, **React 19**, **Tailwind CSS**, and **TypeScript**, delivering a premium dark-themed calendar UI optimized for both desktop and mobile viewing.
