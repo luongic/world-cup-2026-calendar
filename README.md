@@ -10,22 +10,22 @@ This project is built using **Vite**, **React 19**, **Tailwind CSS**, and **Type
 
 ## 🌟 Key Features
 
-* **Interactive Calendar Layout**: Displays June and July 2026 month grids highlighting match days.
-* **Local Time Zone Conversion**: Kickoff times are dynamically parsed from Eastern Time (ET/EDT) and converted to **your browser's local timezone**, adjusting calendar day wraps automatically for late-night matches.
-* **FlagCDN Integration**: Custom, crisp, border-framed country flags rendered dynamically instead of generic emojis, matching a physical premium poster aesthetic.
-* **Knockout Stage Sticker Badges**: Color-coded, interactive badges (like *Round of 32*, *Round of 16*, *Quarter-finals*, *Semi-finals*, and *Final*) that group TBD fixtures with holographic hover shimmer animations.
-* **Detailed Match Tooltips**: Hover over any match row to view the full fixture details, including exact team names, groups, local kickoff times, and host venues (e.g. Mexico City, Los Angeles, Toronto).
-* **Fully Responsive Design**: Scalable calendar layout with responsive day headers (e.g., `MONDAY` on desktop, `MON` on mobile) preventing grid overflows.
+- **Interactive Calendar Layout**: Displays June and July 2026 month grids highlighting match days.
+- **Local Time Zone Conversion**: Kickoff times are dynamically parsed from Eastern Time (ET/EDT) and converted to **your browser's local timezone**, adjusting calendar day wraps automatically for late-night matches.
+- **FlagCDN Integration**: Custom, crisp, border-framed country flags rendered dynamically instead of generic emojis, matching a physical premium poster aesthetic.
+- **Knockout Stage Sticker Badges**: Color-coded, interactive badges (like _Round of 32_, _Round of 16_, _Quarter-finals_, _Semi-finals_, and _Final_) that group TBD fixtures with holographic hover shimmer animations.
+- **Detailed Match Tooltips**: Hover over any match row to view the full fixture details, including exact team names, groups, local kickoff times, and host venues (e.g. Mexico City, Los Angeles, Toronto).
+- **Fully Responsive Design**: Scalable calendar layout with responsive day headers (e.g., `MONDAY` on desktop, `MON` on mobile) preventing grid overflows.
 
 ---
 
 ## 🛠️ Technology Stack
 
-* **Frontend Framework**: [React 19](https://react.dev/)
-* **Build Tool**: [Vite 8](https://vite.dev/)
-* **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-* **Language**: [TypeScript](https://www.typescriptlang.org/)
-* **Asset Loading**: [FlagCDN](https://flagcdn.com/) for country flag images
+- **Frontend Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite 8](https://vite.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Asset Loading**: [FlagCDN](https://flagcdn.com/) for country flag images
 
 ---
 
@@ -40,12 +40,14 @@ Make sure you have [Node.js](https://nodejs.org/) (v18+) and `npm` installed.
 ### Installation
 
 1. **Clone the repository**:
+
    ```bash
-   git clone https://github.com/yourusername/wc2026-calendar.git
-   cd wc2026-calendar
+   git clone https://github.com/luongic/world-cup-2026-calendar.git
+   cd world-cup-2026-calendar
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -71,7 +73,7 @@ This will bundle assets into the `dist/` directory, ready to be hosted on Netlif
 ## 📁 Project Structure
 
 ```text
-wc2026-calendar/
+world-cup-2026-calendar/
 ├── src/
 │   ├── components/
 │   │   ├── CalendarDay.tsx      # Renders individual calendar day cells
@@ -94,8 +96,9 @@ wc2026-calendar/
 ## 📅 Timezone Details (Dynamic Local Time)
 
 All matches in the original FIFA World Cup schedule are listed in **Eastern Time (ET/EDT)**. The application automatically detects your browser's local timezone and converts the kickoff times dynamically:
-* **Timezone Offset Adjustment**: Standardizes Eastern Daylight Time (EDT, UTC-4) to UTC, and then converts it to your device's local timezone.
-* **Midnight Date Roll-Over**: Automatically shifts matches to the next or previous day if the time zone conversion crosses midnight (e.g., late-night matches are correctly grouped under the correct local date).
+
+- **Timezone Offset Adjustment**: Standardizes Eastern Daylight Time (EDT, UTC-4) to UTC, and then converts it to your device's local timezone.
+- **Midnight Date Roll-Over**: Automatically shifts matches to the next or previous day if the time zone conversion crosses midnight (e.g., late-night matches are correctly grouped under the correct local date).
 
 ---
 
@@ -105,4 +108,4 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ---
 
-*Disclaimer: This is a fan-made project and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with FIFA, the FIFA World Cup, or any of their subsidiaries or affiliates.*
+_Disclaimer: This is a fan-made project and is not affiliated, associated, authorized, endorsed by, or in any way officially connected with FIFA, the FIFA World Cup, or any of their subsidiaries or affiliates._
