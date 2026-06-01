@@ -5,7 +5,25 @@ import type { MatchData, Match } from './types';
 
 const rawData = matchData as MatchData;
 
-function convertMatchesToGMT7(matches: Match[]): Match[] {
+function getLocalTimezoneString(): string {
+  try {
+    const parts = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' }).formatToParts(new Date());
+    const tzPart = parts.find((p) => p.type === 'timeZoneName');
+    if (tzPart) return tzPart.value;
+  } catch (e) {
+    // fallback
+  }
+  const offset = new Date().getTimezoneOffset();
+  const absOffset = Math.abs(offset);
+  const hours = Math.floor(absOffset / 60);
+  const minutes = absOffset % 60;
+  const sign = offset <= 0 ? '+' : '-';
+  return `GMT${sign}${hours}${minutes ? `:${String(minutes).padStart(2, '0')}` : ''}`;
+}
+
+const localTz = getLocalTimezoneString();
+
+function convertMatchesToLocalTime(matches: Match[]): Match[] {
   return matches.map((m) => {
     if (m.time === 'TBD' || m.date === 'TBD') {
       return m;
@@ -25,26 +43,24 @@ function convertMatchesToGMT7(matches: Match[]): Match[] {
     // ET in June/July is Eastern Daylight Time (EDT) which is UTC-4.
     // UTC = EDT + 4 hours.
     const utcDate = new Date(Date.UTC(year, month, day, hours + 4, minutes));
-    // Vietnam is GMT+7.
-    const gmt7Date = new Date(utcDate.getTime() + 7 * 60 * 60 * 1000);
 
-    const gmt7Year = gmt7Date.getUTCFullYear();
-    const gmt7Month = String(gmt7Date.getUTCMonth() + 1).padStart(2, '0');
-    const gmt7Day = String(gmt7Date.getUTCDate()).padStart(2, '0');
-    const gmt7Hours = String(gmt7Date.getUTCHours()).padStart(2, '0');
-    const gmt7Minutes = String(gmt7Date.getUTCMinutes()).padStart(2, '0');
+    const localYear = utcDate.getFullYear();
+    const localMonth = String(utcDate.getMonth() + 1).padStart(2, '0');
+    const localDay = String(utcDate.getDate()).padStart(2, '0');
+    const localHours = String(utcDate.getHours()).padStart(2, '0');
+    const localMinutes = String(utcDate.getMinutes()).padStart(2, '0');
 
     return {
       ...m,
-      date: `${gmt7Year}-${gmt7Month}-${gmt7Day}`,
-      time: `${gmt7Hours}:${gmt7Minutes} GMT+7`,
+      date: `${localYear}-${localMonth}-${localDay}`,
+      time: `${localHours}:${localMinutes} (${localTz})`,
     };
   });
 }
 
 const data: MatchData = {
   ...rawData,
-  matches: convertMatchesToGMT7(rawData.matches),
+  matches: convertMatchesToLocalTime(rawData.matches),
 };
 
 export default function App() {
@@ -106,7 +122,7 @@ export default function App() {
 
         <footer className="mt-8 pt-6 border-t border-white/[0.06] text-center">
           <p className="font-condensed text-white/20 text-xs tracking-widest uppercase">
-            All times in Vietnam Time (GMT+7) · Knockout stage fixtures updated
+            All times in local time ({localTz}) · Knockout stage fixtures updated
             after group stage concludes - Donate to{' '}
             <a target="_blank" href="http://git.hanbiro.com/luongic">
               luongic

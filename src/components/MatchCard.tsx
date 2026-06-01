@@ -136,7 +136,7 @@ export default function MatchCard({ match, data }: MatchCardProps) {
       {/* Right Column: Time */}
       <div className="flex-1 flex justify-end">
         <span className="text-[9px] italic text-white/50 font-condensed select-none whitespace-nowrap">
-          {match.time.replace(' GMT+7', '')}
+          {match.time.split(' ')[0]}
         </span>
       </div>
     </div>
