@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <!-- Shiny 3D-like gold gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9A7B1C" />
+      <stop offset="15%" stop-color="#E1BA42" />
+      <stop offset="50%" stop-color="#FEEA9A" />
+      <stop offset="65%" stop-color="#D1A72A" />
+      <stop offset="85%" stop-color="#A27D18" />
+      <stop offset="100%" stop-color="#644C07" />
+    </linearGradient>
+
+    <!-- Vertical gold gradient for the globe -->
+    <radialGradient id="globeGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF2B2" />
+      <stop offset="30%" stop-color="#FCD03C" />
+      <stop offset="70%" stop-color="#C69819" />
+      <stop offset="100%" stop-color="#705204" />
+    </radialGradient>
+
+    <!-- Green malachite band gradient -->
+    <linearGradient id="malachiteGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#063E23" />
+      <stop offset="25%" stop-color="#0D6B3E" />
+      <stop offset="50%" stop-color="#159957" />
+      <stop offset="75%" stop-color="#0D6B3E" />
+      <stop offset="100%" stop-color="#063E23" />
+    </linearGradient>
+
+    <!-- Inner shadow/dark gold for crevices -->
+    <linearGradient id="darkGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#554007" />
+      <stop offset="50%" stop-color="#806212" />
+      <stop offset="100%" stop-color="#554007" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow under the base -->
+  <ellipse cx="32" cy="60" rx="14" ry="2" fill="#000000" opacity="0.3" />
+
+  <!-- Base (flared bottom to top of base) -->
+  <!-- Lower gold lip -->
+  <path d="M 20 59 C 20 59, 20 60, 21 60 L 43 60 C 44 60, 44 59, 44 59 L 43.5 58 L 20.5 58 Z" fill="url(#goldGrad)" />
+  
+  <!-- Bottom Malachite Band (flared, thick) -->
+  <path d="M 20.5 58 L 21.5 54 L 42.5 54 L 43.5 58 Z" fill="url(#malachiteGrad)" />
+  
+  <!-- Middle gold ring spacer -->
+  <path d="M 21.5 54 L 22.3 52 L 41.7 52 L 42.5 54 Z" fill="url(#goldGrad)" />
+
+  <!-- Top Malachite Band (slanted, thinner) -->
+  <path d="M 22.3 52 L 23.2 49 L 40.8 49 L 41.7 52 Z" fill="url(#malachiteGrad)" />
+
+  <!-- Top gold ring spacer -->
+  <path d="M 23.2 49 L 24 47 L 40 47 L 40.8 49 Z" fill="url(#goldGrad)" />
+
+  <!-- Central Stem & Rising Figures -->
+  <!-- Background silhouette connecting base to globe -->
+  <path d="M 24 47 C 24 45, 26 40, 26 36 C 26 31, 23 27, 21 24 C 20 22.5, 21 21, 22 21 C 23.5 21, 25 22.5, 27 25 C 28.5 27, 30 31, 31 35 L 33 35 C 34 31, 35.5 27, 37 25 C 39 22.5, 40.5 21, 42 21 C 43 21, 44 22.5, 43 24 C 41 27, 38 31, 38 36 C 38 40, 40 45, 40 47 Z" fill="url(#darkGold)" />
+
+  <!-- Foreground figure 1 (left rising spiral) -->
+  <path d="M 24 47 
+           C 25 43, 28 39, 29 35 
+           C 30 32, 29 29, 28 27 
+           C 27.5 25.5, 26 24, 25.2 23
+           C 24.5 22, 25 21, 26 21
+           C 27.5 21, 29 23, 30 25.5
+           C 31.2 28.5, 31.8 33, 30 38
+           C 28.5 42, 26 45, 25 47 Z" fill="url(#goldGrad)" />
+
+  <!-- Foreground figure 2 (right rising spiral) -->
+  <path d="M 40 47 
+           C 39 43, 36 39, 35 35 
+           C 34 32, 35 29, 36 27 
+           C 36.5 25.5, 38 24, 38.8 23
+           C 39.5 22, 39 21, 38 21
+           C 36.5 21, 35 23, 34 25.5
+           C 32.8 28.5, 32.2 33, 34 38
+           C 35.5 42, 38 45, 39 47 Z" fill="url(#goldGrad)" />
+
+  <!-- The Globe (Sphere) -->
+  <circle cx="32" cy="18" r="10" fill="url(#globeGrad)" />
+
+  <!-- Globe continent lines (North & South America representation) -->
+  <path d="M 28 12 
+           C 26 14, 25 17, 26 19 
+           C 27 21, 29 20, 30 23 
+           C 31 25, 28 27, 29 28
+           C 30 28, 32 27, 33 27
+           C 35 27, 36 25, 35 23
+           C 34 21, 36 19, 36 17
+           C 36 15, 34 13, 32 12
+           C 30 11, 29 11, 28 12 Z" fill="#FFEAA5" opacity="0.4" />
+
+  <!-- Shiny highlight on the top left of the globe -->
+  <circle cx="28.5" cy="14.5" r="3.5" fill="#FFFFFF" opacity="0.6" />
+
+  <!-- Stylized Arms hugging/lifting the globe -->
+  <!-- Left arm extending over the globe -->
+  <path d="M 26 21 C 25.5 19, 26.5 16, 28.5 14" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" fill="none" />
+  <!-- Right arm extending over the globe -->
+  <path d="M 38 21 C 38.5 19, 37.5 16, 35.5 14" stroke="url(#goldGrad)" stroke-width="2" stroke-linecap="round" fill="none" />
+
+  <!-- Central logo badge detailing (little human shape inside the cup) -->
+  <circle cx="32" cy="31" r="1.5" fill="#FFEAA5" />
+  <path d="M 32 33 C 31 35, 31 38, 32 40 C 33 38, 33 35, 32 33 Z" fill="url(#goldGrad)" />
+</svg>
