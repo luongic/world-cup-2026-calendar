@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --lime: #CAFF00;
+  --lime: #caff00;
   --bg: #0a0a0a;
   --card: #111111;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+}
 
 body {
   font-family: 'Barlow', sans-serif;
@@ -16,9 +25,24 @@ body {
   min-height: 100vh;
 }
 
-.font-display { font-family: 'Bebas Neue', sans-serif; }
-.font-condensed { font-family: 'Barlow Condensed', sans-serif; }
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+}
+.font-condensed {
+  font-family: 'Barlow Condensed', sans-serif;
+}
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar:horizontal {
+  display: none !important;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
