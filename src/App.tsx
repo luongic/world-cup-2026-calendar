@@ -7,7 +7,9 @@ const rawData = matchData as MatchData;
 
 function getLocalTimezoneString(): string {
   try {
-    const parts = new Intl.DateTimeFormat('en-US', { timeZoneName: 'short' }).formatToParts(new Date());
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZoneName: 'short',
+    }).formatToParts(new Date());
     const tzPart = parts.find((p) => p.type === 'timeZoneName');
     if (tzPart) return tzPart.value;
   } catch (e) {
@@ -122,8 +124,8 @@ export default function App() {
 
         <footer className="mt-8 pt-6 border-t border-white/[0.06] text-center">
           <p className="font-condensed text-white/20 text-xs tracking-widest uppercase">
-            All times in local time ({localTz}) · Knockout stage fixtures updated
-            after group stage concludes - Donate to{' '}
+            All times in local time ({localTz}) · Knockout stage fixtures
+            updated after group stage concludes - Donate to{' '}
             <a target="_blank" href="http://git.hanbiro.com/luongic">
               luongic
             </a>
