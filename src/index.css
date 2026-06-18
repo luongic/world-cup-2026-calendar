@@ -46,3 +46,22 @@ body {
   background: #333;
   border-radius: 3px;
 }
+
+.scrollbar-visible::-webkit-scrollbar {
+  height: 5px !important;
+  width: 5px !important;
+}
+.scrollbar-visible::-webkit-scrollbar:horizontal {
+  display: block !important;
+}
+.scrollbar-visible::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+.scrollbar-visible::-webkit-scrollbar-thumb {
+  background: rgba(202, 255, 0, 0.25) !important;
+  border-radius: 3px;
+}
+.scrollbar-visible::-webkit-scrollbar-thumb:hover {
+  background: rgba(202, 255, 0, 0.5) !important;
+}

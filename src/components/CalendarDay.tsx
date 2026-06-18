@@ -22,7 +22,7 @@ export default function CalendarDay({
   viewMode,
 }: CalendarDayProps) {
   if (day === null) {
-    return <div className="min-h-[100px] rounded-lg bg-white/[0.02] border border-white/[0.04]" />;
+    return <div className="min-h-[90px] sm:min-h-[100px] rounded-lg bg-white/[0.02] border border-white/[0.04]" />;
   }
 
   // A day is a knockout TBD day if we have matches and all of them are knockout and TBD (no country flag)
@@ -41,7 +41,7 @@ export default function CalendarDay({
   return (
     <div
       className={`
-        min-h-[100px] rounded-xl border p-2 flex flex-col gap-1 transition-all duration-200
+        min-h-[90px] sm:min-h-[100px] rounded-lg sm:rounded-xl border p-1 sm:p-2 flex flex-col gap-0.5 sm:gap-1 transition-all duration-200
         ${isToday
           ? 'border-[#CAFF00]/60 bg-[#CAFF00]/5 shadow-[0_0_12px_rgba(202,255,0,0.1)]'
           : 'border-white/[0.08] bg-[#0c0c0c] hover:bg-white/[0.03] hover:border-white/[0.15]'
@@ -52,7 +52,7 @@ export default function CalendarDay({
       {/* Day Number */}
       <div
         className={`
-          text-right text-[13px] font-condensed font-extrabold leading-none tracking-wider text-[#CAFF00]/90
+          text-right text-[11px] sm:text-[13px] font-condensed font-extrabold leading-none tracking-wider text-[#CAFF00]/90
         `}
       >
         {String(day).padStart(2, '0')}
@@ -67,7 +67,7 @@ export default function CalendarDay({
             matches={matches}
           />
         ) : (
-          <div className="flex flex-col gap-1 justify-center flex-1">
+          <div className="flex flex-col gap-0.5 sm:gap-1 justify-center flex-1">
             {matches.map((m) => (
               <MatchCard key={m.id} match={m} data={data} viewMode={viewMode} />
             ))}

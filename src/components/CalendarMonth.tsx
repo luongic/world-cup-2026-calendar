@@ -54,78 +54,85 @@ export default function CalendarMonth({
       {/* Month Header */}
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
         <div className="flex items-baseline gap-4">
-          <h2 className="font-display text-7xl text-white leading-none tracking-tight">
+          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl text-white leading-none tracking-tight">
             {monthName}
           </h2>
-          <span className="font-condensed text-2xl text-white/20 font-bold">
+          <span className="font-condensed text-lg sm:text-2xl text-white/20 font-bold">
             {year}
           </span>
         </div>
 
         {/* View Mode Toggle */}
         <div
-          className="flex bg-white/[0.03] border border-white/[0.08] p-1 rounded-full gap-1"
-          style={{ padding: 4 }}
+          className="flex bg-white/[0.03] border border-white/[0.08] p-0.5 sm:p-1 rounded-full gap-0.5 sm:gap-1"
         >
           <button
             onClick={() => setViewMode('classic')}
-            className={`px-5 py-2 rounded-full text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+            className={`px-3 py-1 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
               viewMode === 'classic'
                 ? 'bg-[#CAFF00] text-black shadow-[0_0_12px_rgba(202,255,0,0.3)]'
                 : 'text-white/40 hover:text-white/80'
             }`}
-            style={{ padding: 2 }}
           >
             Classic
           </button>
           <button
             onClick={() => setViewMode('compact')}
-            className={`px-5 py-2 rounded-full text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+            className={`px-3 py-1 sm:px-5 sm:py-2 rounded-full text-[10px] sm:text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
               viewMode === 'compact'
                 ? 'bg-[#CAFF00] text-black shadow-[0_0_12px_rgba(202,255,0,0.3)]'
                 : 'text-white/40 hover:text-white/80'
             }`}
-            style={{ padding: 2 }}
           >
             Compact
           </button>
         </div>
       </div>
 
-      <div className="flex flex-col gap-4">
-        {/* Day headers */}
-        <div className="grid grid-cols-7 gap-2">
-          {DAYS.map((d) => (
-            <div
-              key={d.full}
-              className="text-center text-[10px] sm:text-xs font-condensed font-bold tracking-wider py-1.5 rounded bg-[#CAFF00] text-black uppercase"
-            >
-              <span className="hidden sm:inline">{d.full}</span>
-              <span className="inline sm:hidden">{d.short}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Calendar grid */}
-        <div className="grid grid-cols-7 gap-2">
-          {cells.map((day, idx) => (
-            <CalendarDay
-              key={idx}
-              day={day}
-              month={month}
-              year={year}
-              matches={getMatchesForDay(day)}
-              data={data}
-              isToday={
-                day !== null &&
-                today.getFullYear() === year &&
-                today.getMonth() + 1 === month &&
-                today.getDate() === day
+      <div className="w-full overflow-x-auto pb-4 scrollbar-visible">
+        <div className="min-w-[750px] md:min-w-0 flex flex-col gap-4">
+          {/* Day headers */}
+          <div className="grid grid-cols-7 gap-1 sm:gap-2">
+            {DAYS.map((d) => {
+              let bgClass = 'bg-[#CAFF00]';
+              if (d.short === 'SAT') {
+                bgClass = 'bg-[#00D4FF]';
+              } else if (d.short === 'SUN') {
+                bgClass = 'bg-[#FF2D90]';
               }
-              isCurrentMonth={true}
-              viewMode={viewMode}
-            />
-          ))}
+              return (
+                <div
+                  key={d.full}
+                  className={`text-center text-[10px] sm:text-xs font-condensed font-bold tracking-wider py-1.5 rounded text-black uppercase ${bgClass}`}
+                >
+                  <span className="hidden sm:inline">{d.full}</span>
+                  <span className="inline sm:hidden">{d.short}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Calendar grid */}
+          <div className="grid grid-cols-7 gap-1 sm:gap-2">
+            {cells.map((day, idx) => (
+              <CalendarDay
+                key={idx}
+                day={day}
+                month={month}
+                year={year}
+                matches={getMatchesForDay(day)}
+                data={data}
+                isToday={
+                  day !== null &&
+                  today.getFullYear() === year &&
+                  today.getMonth() + 1 === month &&
+                  today.getDate() === day
+                }
+                isCurrentMonth={true}
+                viewMode={viewMode}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

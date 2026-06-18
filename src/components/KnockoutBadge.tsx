@@ -37,7 +37,7 @@ export default function KnockoutBadge({ stage, color, matches }: KnockoutBadgePr
   return (
     <div className="flex flex-col items-center justify-center flex-1 py-1" title={tooltipText}>
       <div
-        className="w-14 h-14 rounded-full flex flex-col items-center justify-center text-center p-1.5 border-2 transition-all duration-300 relative overflow-hidden group/badge cursor-pointer select-none"
+        className="w-11 h-11 sm:w-14 sm:h-14 rounded-full flex flex-col items-center justify-center text-center p-1 sm:p-1.5 border sm:border-2 transition-all duration-300 relative overflow-hidden group/badge cursor-pointer select-none"
         style={{
           borderColor: color,
           background: `${color}10`,
@@ -49,14 +49,14 @@ export default function KnockoutBadge({ stage, color, matches }: KnockoutBadgePr
           className="absolute inset-0 opacity-20 bg-gradient-to-tr from-transparent via-white to-transparent -translate-x-full group-hover/badge:translate-x-full transition-transform duration-1000 ease-out"
         />
 
-        <span className="text-[5px] font-condensed tracking-[0.2em] font-black text-white/40 leading-none uppercase">
+        <span className="hidden sm:inline text-[5px] font-condensed tracking-[0.2em] font-black text-white/40 leading-none uppercase">
           FIFA 2026
         </span>
-        <span className="text-[7px] font-black font-condensed tracking-wide text-white leading-tight mt-0.5">
+        <span className="text-[6px] sm:text-[7px] font-black font-condensed tracking-wide text-white leading-tight mt-0.5">
           {title}
         </span>
         <span
-          className="text-[13px] font-black font-display leading-none tracking-tight"
+          className="text-[10px] sm:text-[13px] font-black font-display leading-none tracking-tight"
           style={{ color }}
         >
           {subtitle}

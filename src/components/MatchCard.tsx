@@ -58,13 +58,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
   if (viewMode === 'compact') {
     return (
       <div
-        className="flex items-center justify-center gap-2 w-full hover:bg-white/5 rounded transition-colors duration-150 cursor-pointer select-none"
-        style={{
-          paddingTop: '3px',
-          paddingBottom: '3px',
-          paddingLeft: '4px',
-          paddingRight: '4px',
-        }}
+        className="flex items-center justify-center gap-1 sm:gap-2 w-full hover:bg-white/5 rounded transition-colors duration-150 cursor-pointer select-none py-0.5 px-1 sm:py-1 sm:px-2"
       >
         {/* Home Flag */}
         <div className="relative flex items-center justify-center" title={match.home}>
@@ -77,16 +71,16 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[32px] h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
             />
           )}
-          <span className={`${homeCC ? 'hidden' : ''} text-sm leading-none`}>
+          <span className={`${homeCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
             {homeFlag}
           </span>
         </div>
 
         {/* Time in Middle (smaller than flags) */}
-        <span className="text-[11px] font-condensed font-bold text-white/70 select-none whitespace-nowrap px-1">
+        <span className="text-[10px] sm:text-[11px] font-condensed font-bold text-white/70 select-none whitespace-nowrap px-0.5 sm:px-1">
           {match.time.split(' ')[0]}
         </span>
 
@@ -101,10 +95,10 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[32px] h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
             />
           )}
-          <span className={`${awayCC ? 'hidden' : ''} text-sm leading-none`}>
+          <span className={`${awayCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
             {awayFlag}
           </span>
         </div>
@@ -114,22 +108,16 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
 
   return (
     <div
-      className="flex items-center justify-between w-full gap-1 hover:bg-white/5 rounded transition-colors duration-150 cursor-pointer select-none"
-      style={{
-        paddingTop: '3px',
-        paddingBottom: '3px',
-        paddingLeft: '6px',
-        paddingRight: '6px',
-      }}
+      className="flex items-center justify-between w-full gap-1 hover:bg-white/5 rounded transition-colors duration-150 cursor-pointer select-none py-0.5 px-1 sm:py-1 sm:px-1.5"
     >
       {/* Left Column: Group Name */}
       <div className="flex-1 flex justify-start">
         {match.group ? (
-          <span className="text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
+          <span className="text-[10px] sm:text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
             (G<span className="hidden sm:inline">roup</span> {match.group})
           </span>
         ) : (
-          <span className="text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
+          <span className="text-[10px] sm:text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
             (
             {match.stage === 'Third Place' || match.stage === 'Play-off for third place'
               ? '3rd'
@@ -146,7 +134,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
       </div>
 
       {/* Center Column: Flags and VS */}
-      <div className="flex items-center gap-1.5 justify-center flex-shrink-0">
+      <div className="flex items-center gap-1 sm:gap-1.5 justify-center flex-shrink-0">
         {/* Home Flag */}
         <div className="relative flex items-center justify-center" title={match.home}>
           {homeCC && (
@@ -158,16 +146,16 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[32px] h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
             />
           )}
-          <span className={`${homeCC ? 'hidden' : ''} text-sm leading-none`}>
+          <span className={`${homeCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
             {homeFlag}
           </span>
         </div>
 
         {/* VS separator */}
-        <span className="text-[10px] font-condensed font-bold text-white/30 lowercase select-none px-0.5">
+        <span className="text-[9px] sm:text-[10px] font-condensed font-bold text-white/30 lowercase select-none px-0.25 sm:px-0.5">
           v
         </span>
 
@@ -182,10 +170,10 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[32px] h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
             />
           )}
-          <span className={`${awayCC ? 'hidden' : ''} text-sm leading-none`}>
+          <span className={`${awayCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
             {awayFlag}
           </span>
         </div>
@@ -193,7 +181,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
 
       {/* Right Column: Time */}
       <div className="flex-1 flex justify-end">
-        <span className="text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
+        <span className="text-[10px] sm:text-[11px] italic text-white/50 font-condensed select-none whitespace-nowrap">
           {match.time.split(' ')[0]}
         </span>
       </div>
