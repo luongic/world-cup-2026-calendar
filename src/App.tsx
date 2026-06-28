@@ -91,7 +91,7 @@ const data: MatchData = {
 
 export default function App() {
   const [viewMode, setViewMode] = useState<'classic' | 'compact' | 'draw'>(
-    'draw',
+    'compact',
   );
 
   return (

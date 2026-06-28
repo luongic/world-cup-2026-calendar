@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Match, MatchData } from '../types';
 import BracketMatchCard from './BracketMatchCard';
 import { stageColors } from './MatchCard';
@@ -84,10 +83,6 @@ function Connector({ top, bottom, isLeft }: ConnectorProps) {
 }
 
 export default function KnockoutBracket({ data }: KnockoutBracketProps) {
-  const [activeTab, setActiveTab] = useState<
-    'R32' | 'R16' | 'QF' | 'SF' | 'FINAL'
-  >('FINAL');
-
   const findMatch = (id: number): Match => {
     const m = data.matches.find((item) => item.id === id);
     if (!m) {
@@ -185,47 +180,9 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {/* Tab bar for mobile / small screen view */}
-      <div className="flex md:hidden bg-white/[0.02] border border-white/[0.06] p-1 rounded-full gap-1 mb-8 w-full max-w-sm overflow-x-auto justify-between">
-        {(['R32', 'R16', 'QF', 'SF', 'FINAL'] as const).map((tab) => {
-          const tabLabel = tab;
-          const tabStageName =
-            tab === 'R32'
-              ? 'Round of 32'
-              : tab === 'R16'
-                ? 'Round of 16'
-                : tab === 'QF'
-                  ? 'Quarter-final'
-                  : tab === 'SF'
-                    ? 'Semi-final'
-                    : 'Final';
-          const tabColor = getStageColor(tabStageName);
-          const isSelected = activeTab === tab;
-
-          return (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              style={
-                isSelected
-                  ? {
-                      backgroundColor: `${tabColor}15`,
-                      color: tabColor,
-                      borderColor: `${tabColor}33`,
-                    }
-                  : {}
-              }
-              className={`flex-1 py-1.5 px-2.5 rounded-full text-xs font-condensed font-bold tracking-wider uppercase transition-all duration-200 border border-transparent text-white/40`}
-            >
-              {tabLabel}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Desktop Bracket Structure - Mathematically Perfect Symmetrical Alignment */}
-      <div className="hidden md:flex justify-center items-center w-full min-w-[940px] h-[660px] select-none py-2 overflow-x-auto">
+    <div className="w-full overflow-x-auto pb-4 scrollbar-visible">
+      {/* Bracket Structure - Mathematically Perfect Symmetrical Alignment */}
+      <div className="flex justify-center items-center w-full min-w-[940px] h-[660px] select-none py-2">
         <div className="flex gap-[40px] h-full items-center justify-center">
           {/* Left Column 1: Round of 32 (8 matches, 4 pair connectors) */}
           <div className="relative w-[50px] h-[624px]">
@@ -634,64 +591,6 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
             )}
           </div>
         </div>
-      </div>
-
-      {/* Mobile list view based on active tab */}
-      <div className="flex md:hidden flex-col gap-3 w-full max-w-sm pb-8 items-center">
-        {activeTab === 'R32' &&
-          [...leftR32, ...rightR32].map((m) => (
-            <BracketMatchCard key={m.id} match={m} data={data} />
-          ))}
-        {activeTab === 'R16' &&
-          [...leftR16, ...rightR16].map((m) => (
-            <BracketMatchCard key={m.id} match={m} data={data} />
-          ))}
-        {activeTab === 'QF' &&
-          [...leftQF, ...rightQF].map((m) => (
-            <BracketMatchCard key={m.id} match={m} data={data} />
-          ))}
-        {activeTab === 'SF' &&
-          [...leftSF, ...rightSF].map((m) => (
-            <BracketMatchCard key={m.id} match={m} data={data} />
-          ))}
-        {activeTab === 'FINAL' && (
-          <div className="flex flex-col gap-4 items-center w-full">
-            {/* World Champion banner */}
-            <div className="w-full flex flex-col items-center">
-              <div className="text-[10px] font-condensed font-black tracking-[0.2em] text-[#FFD700] mb-1 text-center uppercase">
-                WORLD CHAMPION
-              </div>
-              <div
-                className={`w-full max-w-[120px] h-[72px] rounded-[8px] flex flex-col items-center justify-center p-2 text-center border relative ${
-                  isChampPlaceholder
-                    ? 'bg-gradient-to-b from-[#1c1808] to-[#0e0c04] border-[#FFD700]/20 shadow-[0_0_15px_rgba(255,215,0,0.05)]'
-                    : 'bg-gradient-to-b from-[#2a2408] to-[#121004] border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.2)]'
-                }`}
-              >
-                <div className="text-lg">🏆</div>
-                <span className="text-xs font-bold text-white font-condensed tracking-wider uppercase">
-                  {isChampPlaceholder ? 'TBD' : `${champFlag} ${championName}`}
-                </span>
-              </div>
-            </div>
-
-            <div className="w-full flex flex-col items-center gap-1.5">
-              <span className="text-[9px] font-condensed font-bold tracking-widest text-white/40 uppercase">
-                Final Match
-              </span>
-              <BracketMatchCard match={finalMatch} data={data} />
-            </div>
-
-            {thirdPlaceMatch && (
-              <div className="w-full flex flex-col items-center gap-1.5 mt-2">
-                <span className="text-[9px] font-condensed font-bold tracking-widest text-[#A855F7]/80 uppercase">
-                  Third Place Play-off
-                </span>
-                <BracketMatchCard match={thirdPlaceMatch} data={data} />
-              </div>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
