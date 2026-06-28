@@ -15,6 +15,7 @@ interface CalendarDayProps {
 
 export default function CalendarDay({
   day,
+  month,
   matches,
   data,
   isToday,
@@ -51,11 +52,10 @@ export default function CalendarDay({
     >
       {/* Day Number */}
       <div
-        className={`
-          text-right text-[11px] sm:text-[13px] font-condensed font-extrabold leading-none tracking-wider text-[#CAFF00]/90
-        `}
+        style={{ color: month === 6 ? 'rgba(202, 255, 0, 0.9)' : 'rgba(0, 212, 255, 0.9)' }}
+        className="text-right text-[11px] sm:text-[13px] font-condensed font-extrabold leading-none tracking-wider"
       >
-        {String(day).padStart(2, '0')}
+        {String(day).padStart(2, '0')}/{String(month).padStart(2, '0')}
       </div>
 
       {/* Matches Grid / Badge */}

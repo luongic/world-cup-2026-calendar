@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import CalendarMonth from './components/CalendarMonth';
+import KnockoutBracket from './components/KnockoutBracket';
 // import Legend from './components/Legend';
 import matchData from './data/matches.json';
 import type { MatchData, Match } from './types';
@@ -88,8 +90,9 @@ const data: MatchData = {
 };
 
 export default function App() {
-  const juneMatches = data.matches.filter((m) => m.date.startsWith('2026-06'));
-  const julyMatches = data.matches.filter((m) => m.date.startsWith('2026-07'));
+  const [viewMode, setViewMode] = useState<'classic' | 'compact' | 'draw'>(
+    'draw',
+  );
 
   return (
     <div
@@ -104,17 +107,22 @@ export default function App() {
       />
 
       <div className="relative w-full max-w-7xl px-4 sm:px-6 py-8">
-        {/* <header className="mb-10 flex items-start justify-between">
+        <header className="mb-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pb-6 border-b border-white/[0.06]">
           <div>
-            <div className="flex items-center gap-3 mb-1">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-lg"
-                style={{ background: 'rgba(202,255,0,0.15)', border: '1px solid rgba(202,255,0,0.4)' }}>
+            {/* <div className="flex items-center gap-3 mb-1">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center text-lg"
+                style={{
+                  background: 'rgba(202,255,0,0.15)',
+                  border: '1px solid rgba(202,255,0,0.4)',
+                }}
+              >
                 ⚽
               </div>
               <span className="font-condensed text-xs font-bold tracking-[0.3em] uppercase text-[#CAFF00]">
                 FIFA World Cup
               </span>
-            </div>
+            </div> */}
             <h1 className="font-display text-5xl sm:text-6xl text-white leading-none">
               2026 SCHEDULE
             </h1>
@@ -122,29 +130,55 @@ export default function App() {
               USA · CANADA · MEXICO &nbsp;·&nbsp; 11 JUN – 19 JUL 2026
             </p>
           </div>
-          <div className="hidden sm:block text-right">
-            <div className="font-condensed text-xs text-white/30 tracking-widest uppercase mb-1">48 Teams</div>
-            <div className="font-condensed text-xs text-white/30 tracking-widest uppercase mb-1">104 Matches</div>
-            <div className="font-condensed text-xs text-white/30 tracking-widest uppercase">16 Venues</div>
+
+          <div className="flex flex-col sm:items-end gap-3">
+            {/* View Selector Toggle */}
+            <div className="flex bg-white/[0.03] border border-white/[0.08] p-0.5 sm:p-1 rounded-full gap-0.5 sm:gap-1">
+              {(['classic', 'compact', 'draw'] as const).map((mode) => (
+                <button
+                  key={mode}
+                  onClick={() => setViewMode(mode)}
+                  className={`view-toggle-btn rounded-full font-condensed font-bold tracking-wider uppercase transition-all duration-200 cursor-pointer ${
+                    viewMode === mode
+                      ? 'bg-[#CAFF00] text-black shadow-[0_0_12px_rgba(202,255,0,0.3)]'
+                      : 'text-white/40 hover:text-white/80'
+                  }`}
+                >
+                  {mode}
+                </button>
+              ))}
+            </div>
+
+            {/* <div className="hidden sm:flex items-center gap-4 text-right">
+              <div className="font-condensed text-[10px] text-white/30 tracking-widest uppercase">
+                48 Teams
+              </div>
+              <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+              <div className="font-condensed text-[10px] text-white/30 tracking-widest uppercase">
+                104 Matches
+              </div>
+              <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+              <div className="font-condensed text-[10px] text-white/30 tracking-widest uppercase">
+                16 Venues
+              </div>
+            </div> */}
           </div>
-        </header> */}
+        </header>
 
-        {/* <Legend data={data} /> */}
+        {viewMode !== 'draw' ? (
+          <CalendarMonth
+            matches={data.matches.filter(
+              (m) =>
+                m.date.startsWith('2026-06') || m.date.startsWith('2026-07'),
+            )}
+            data={data}
+            viewMode={viewMode}
+          />
+        ) : (
+          <KnockoutBracket data={data} />
+        )}
 
-        <CalendarMonth
-          year={2026}
-          month={6}
-          matches={juneMatches}
-          data={data}
-        />
-        <CalendarMonth
-          year={2026}
-          month={7}
-          matches={julyMatches}
-          data={data}
-        />
-
-        <footer className="mt-8 pt-6 border-t border-white/[0.06] text-center">
+        {/* <footer className="mt-8 pt-6 border-t border-white/[0.06] text-center">
           <p className="font-condensed text-white/20 text-xs tracking-widest uppercase">
             All times in local time ({localTz}) · Knockout stage fixtures
             updated after group stage concludes - Donate to{' '}
@@ -152,7 +186,7 @@ export default function App() {
               luongic
             </a>
           </p>
-        </footer>
+        </footer> */}
       </div>
     </div>
   );

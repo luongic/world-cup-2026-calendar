@@ -41,7 +41,6 @@ export default function KnockoutBadge({ stage, color, matches }: KnockoutBadgePr
         style={{
           borderColor: color,
           background: `${color}10`,
-          boxShadow: `0 0 10px ${color}20, inset 0 0 8px ${color}10`,
         }}
       >
         {/* Holographic shimmer effect on hover */}
