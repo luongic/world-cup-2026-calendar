@@ -1,6 +1,5 @@
 import type { Match, MatchData } from '../types';
 import BracketMatchCard from './BracketMatchCard';
-import { stageColors } from './MatchCard';
 
 interface KnockoutBracketProps {
   data: MatchData;
@@ -136,7 +135,6 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
   const champFlag = data.flags[championName] ?? '';
   const champCC = flagEmojiToCountryCode(champFlag);
 
-  const getStageColor = (stage: string) => stageColors[stage] ?? '#888';
 
   // Absolute positioning definitions for 100% perfect visual alignment
   const r32Tops = [0, 80, 160, 240, 320, 400, 480, 560];
