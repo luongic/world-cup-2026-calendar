@@ -5,6 +5,55 @@
   --lime: #caff00;
   --bg: #0a0a0a;
   --card: #111111;
+  --bracket-gap: 16px;
+  --bracket-card-width: 36px;
+  --bracket-card-height: 48px;
+  --bracket-card-row-gap: 12px;
+  --bracket-card-padding: 4px;
+  --bracket-flag-width: 24px;
+  --bracket-flag-height: 16px;
+  --bracket-champ-card-height: calc(var(--bracket-card-height) * 0.56);
+  --step: calc(var(--bracket-card-height) + var(--bracket-card-row-gap));
+  --bracket-connector-radius: 6px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --bracket-gap: 24px;
+    --bracket-card-width: 42px;
+    --bracket-card-height: 56px;
+    --bracket-card-row-gap: 14px;
+    --bracket-card-padding: 4px;
+    --bracket-flag-width: 32px;
+    --bracket-flag-height: 20px;
+    --bracket-connector-radius: 8px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --bracket-gap: 32px;
+    --bracket-card-width: 46px;
+    --bracket-card-height: 68px;
+    --bracket-card-row-gap: 16px;
+    --bracket-card-padding: 5px;
+    --bracket-flag-width: 36px;
+    --bracket-flag-height: 24px;
+    --bracket-connector-radius: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --bracket-gap: 40px;
+    --bracket-card-width: 50px;
+    --bracket-card-height: 72px;
+    --bracket-card-row-gap: 16px;
+    --bracket-card-padding: 5px;
+    --bracket-flag-width: 40px;
+    --bracket-flag-height: 26px;
+    --bracket-connector-radius: 16px;
+  }
 }
 
 * {

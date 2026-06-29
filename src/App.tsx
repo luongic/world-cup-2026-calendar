@@ -133,7 +133,7 @@ export default function App() {
 
           <div className="flex flex-col sm:items-end gap-3">
             {/* View Selector Toggle */}
-            <div className="flex bg-white/[0.03] border border-white/[0.08] p-0.5 sm:p-1 rounded-full gap-0.5 sm:gap-1">
+            <div className="flex bg-white/[0.03] border border-white/[0.08] p-0.5 sm:p-1 rounded-full">
               {(['classic', 'compact', 'bracket'] as const).map((mode) => (
                 <button
                   key={mode}

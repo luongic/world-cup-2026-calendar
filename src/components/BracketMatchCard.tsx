@@ -61,8 +61,10 @@ export default function BracketMatchCard({
 
   // Highlight styling
   const cardStyle = {
-    borderColor: 'rgba(255, 255, 255, 0.05)',
-    padding: '5px',
+    borderColor: 'rgba(255, 255, 255, 0.18)',
+    padding: 'var(--bracket-card-padding)',
+    width: 'var(--bracket-card-width)',
+    height: 'var(--bracket-card-height)',
   };
 
   const tooltipText = `${formatTeamName(match.home)} vs ${formatTeamName(match.away)}\nTime: ${dateTimeStr}\nVenue: ${match.venue}\nStage: ${match.stage} (Match ${match.id})`;
@@ -73,25 +75,34 @@ export default function BracketMatchCard({
       // onMouseLeave={onHoverEnd}
       style={cardStyle}
       title={tooltipText}
-      className={`w-[50px] h-[64px] bg-[#111111] border rounded-[10px] flex flex-col justify-between items-center transition-all duration-200 select-none cursor-pointer shadow-[4px_4px_8px_rgba(0,0,0,0.6),-2px_-2px_6px_rgba(255,255,255,0.015)] hover:translate-y-[-1px]`}
+      className={`bg-[#111111] border rounded-[10px] flex flex-col justify-between items-center transition-all duration-200 select-none cursor-pointer shadow-[4px_4px_8px_rgba(0,0,0,0.6),-2px_-2px_6px_rgba(255,255,255,0.015)] hover:translate-y-[-1px]`}
     >
       {/* Home Flag Slot */}
-      <div className="w-[36px] h-[24px] relative flex-shrink-0">
+      <div
+        style={{ width: 'var(--bracket-flag-width)', height: 'var(--bracket-flag-height)' }}
+        className="relative flex-shrink-0"
+      >
         {isHomePlaceholder ? (
-          <div className="w-full h-full rounded-[4px] bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-[9px] font-bold text-white/40 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
+          <div className="w-full h-full rounded-tl-[8px] rounded-br-[8px] bg-[#1a1a1a] border border-white/20 flex items-center justify-center text-[9px] font-bold text-white/70 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
             ?
           </div>
         ) : (
-          <div className="w-full h-full relative overflow-hidden rounded-[3px] border border-black/30">
-            {homeCC ? (
+          <div className="w-full h-full relative overflow-hidden rounded-tl-[8px] rounded-br-[8px] border border-black/30 flex items-center justify-center">
+            {homeCC && (
               <img
                 src={`https://flagcdn.com/w40/${homeCC}.png`}
                 alt={match.home}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  const fallback = e.currentTarget.nextElementSibling;
+                  if (fallback) fallback.classList.remove('hidden');
+                }}
                 className="w-full h-full object-cover"
               />
-            ) : (
-              <span className="text-[10px] leading-none">{homeFlag}</span>
             )}
+            <span className={`${homeCC ? 'hidden' : ''} text-[10px] sm:text-xs leading-none`}>
+              {homeFlag}
+            </span>
           </div>
         )}
         {match.homeScore !== undefined && (
@@ -102,22 +113,31 @@ export default function BracketMatchCard({
       </div>
 
       {/* Away Flag Slot */}
-      <div className="w-[36px] h-[24px] relative flex-shrink-0">
+      <div
+        style={{ width: 'var(--bracket-flag-width)', height: 'var(--bracket-flag-height)' }}
+        className="relative flex-shrink-0"
+      >
         {isAwayPlaceholder ? (
-          <div className="w-full h-full rounded-[4px] bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-[9px] font-bold text-white/40 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
+          <div className="w-full h-full rounded-tl-[8px] rounded-br-[8px] bg-[#1a1a1a] border border-white/20 flex items-center justify-center text-[9px] font-bold text-white/70 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
             ?
           </div>
         ) : (
-          <div className="w-full h-full relative overflow-hidden rounded-[3px] border border-black/30">
-            {awayCC ? (
+          <div className="w-full h-full relative overflow-hidden rounded-tl-[8px] rounded-br-[8px] border border-black/30 flex items-center justify-center">
+            {awayCC && (
               <img
                 src={`https://flagcdn.com/w40/${awayCC}.png`}
                 alt={match.away}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  const fallback = e.currentTarget.nextElementSibling;
+                  if (fallback) fallback.classList.remove('hidden');
+                }}
                 className="w-full h-full object-cover"
               />
-            ) : (
-              <span className="text-[10px] leading-none">{awayFlag}</span>
             )}
+            <span className={`${awayCC ? 'hidden' : ''} text-[10px] sm:text-xs leading-none`}>
+              {awayFlag}
+            </span>
           </div>
         )}
         {match.awayScore !== undefined && (

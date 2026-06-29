@@ -29,33 +29,35 @@ function formatTeamName(name: string): string {
 }
 
 interface ConnectorProps {
-  top: number;
-  bottom: number;
+  top: string;
+  bottom: string;
   isLeft: boolean;
 }
+
+const border_rounded_var = 'var(--bracket-connector-radius)';
 
 function Connector({ top, bottom, isLeft }: ConnectorProps) {
   const borderStyle = isLeft
     ? {
-        borderTop: '2px solid rgba(255,255,255,0.05)',
-        borderBottom: '2px solid rgba(255,255,255,0.05)',
-        borderRight: '2px solid rgba(255,255,255,0.05)',
-        borderTopRightRadius: '8px',
-        borderBottomRightRadius: '8px',
+        borderTop: '2px solid rgba(255,255,255,0.18)',
+        borderBottom: '2px solid rgba(255,255,255,0.18)',
+        borderRight: '2px solid rgba(255,255,255,0.18)',
+        borderTopRightRadius: border_rounded_var,
+        borderBottomRightRadius: border_rounded_var,
       }
     : {
-        borderTop: '2px solid rgba(255,255,255,0.05)',
-        borderBottom: '2px solid rgba(255,255,255,0.05)',
-        borderLeft: '2px solid rgba(255,255,255,0.05)',
-        borderTopLeftRadius: '8px',
-        borderBottomLeftRadius: '8px',
+        borderTop: '2px solid rgba(255,255,255,0.18)',
+        borderBottom: '2px solid rgba(255,255,255,0.18)',
+        borderLeft: '2px solid rgba(255,255,255,0.18)',
+        borderTopLeftRadius: border_rounded_var,
+        borderBottomLeftRadius: border_rounded_var,
       };
 
   const connectorStyle = {
     position: 'absolute' as const,
-    top: `${top}px`,
-    height: `${bottom - top}px`,
-    width: '20px',
+    top: top,
+    height: `calc(${bottom} - ${top})`,
+    width: 'calc(var(--bracket-gap) / 2)',
     left: isLeft ? '100%' : 'auto',
     right: isLeft ? 'auto' : '100%',
     pointerEvents: 'none' as const,
@@ -66,10 +68,10 @@ function Connector({ top, bottom, isLeft }: ConnectorProps) {
     position: 'absolute' as const,
     top: '50%',
     height: '2px',
-    width: '20px',
+    width: 'calc(var(--bracket-gap) / 2)',
     left: isLeft ? '100%' : 'auto',
     right: isLeft ? 'auto' : '100%',
-    backgroundColor: 'rgba(255,255,255,0.05)',
+    backgroundColor: 'rgba(255,255,255,0.18)',
     transform: 'translateY(-50%)',
     pointerEvents: 'none' as const,
   };
@@ -135,27 +137,38 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
   const champFlag = data.flags[championName] ?? '';
   const champCC = flagEmojiToCountryCode(champFlag);
 
-
   // Absolute positioning definitions for 100% perfect visual alignment
-  const r32Tops = [0, 80, 160, 240, 320, 400, 480, 560];
-  const r16Tops = [40, 200, 360, 520];
-  const qfTops = [120, 440];
-  const sfTops = [280];
+  const r32Tops = [
+    'calc(0 * var(--step))',
+    'calc(1 * var(--step))',
+    'calc(2 * var(--step))',
+    'calc(3 * var(--step))',
+    'calc(4 * var(--step))',
+    'calc(5 * var(--step))',
+    'calc(6 * var(--step))',
+    'calc(7 * var(--step))',
+  ];
+  const r16Tops = [
+    'calc(0.5 * var(--step))',
+    'calc(2.5 * var(--step))',
+    'calc(4.5 * var(--step))',
+    'calc(6.5 * var(--step))',
+  ];
+  const qfTops = ['calc(1.5 * var(--step))', 'calc(5.5 * var(--step))'];
+  const sfTops = ['calc(3.5 * var(--step))'];
 
   const renderAbsolutePairConnector = (
     _matchAId: number,
     _matchBId: number,
-    topCardTop: number,
-    bottomCardTop: number,
+    topCardTop: string,
+    bottomCardTop: string,
     isLeft: boolean,
     _stage?: string,
   ) => {
-    // Connector top aligns with center of top card (topCardTop + 32px)
-    // Connector bottom aligns with center of bottom card (bottomCardTop + 32px)
     return (
       <Connector
-        top={topCardTop + 32}
-        bottom={bottomCardTop + 32}
+        top={`calc(${topCardTop} + (var(--bracket-card-height) / 2))`}
+        bottom={`calc(${bottomCardTop} + (var(--bracket-card-height) / 2))`}
         isLeft={isLeft}
       />
     );
@@ -164,12 +177,12 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
   const renderAbsoluteSFLine = (_matchId: number, isLeft: boolean) => {
     const sfLineStyle = {
       position: 'absolute' as const,
-      top: '312px',
+      top: 'calc(3.5 * var(--step) + var(--bracket-card-height) / 2)',
       left: isLeft ? '100%' : 'auto',
       right: isLeft ? 'auto' : '100%',
-      width: '40px',
+      width: 'var(--bracket-gap)',
       height: '2px',
-      backgroundColor: 'rgba(255,255,255,0.05)',
+      backgroundColor: 'rgba(255,255,255,0.18)',
       transform: 'translateY(-50%)',
       pointerEvents: 'none' as const,
     };
@@ -180,14 +193,28 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
   return (
     <div className="w-full overflow-x-auto pb-4 scrollbar-visible">
       {/* Bracket Structure - Mathematically Perfect Symmetrical Alignment */}
-      <div className="flex justify-center items-center w-full min-w-[940px] h-[660px] select-none py-2">
-        <div className="flex gap-[40px] h-full items-center justify-center">
+      <div
+        className="flex justify-center items-center w-full select-none py-2"
+        style={{
+          height: 'calc(7 * var(--step) + var(--bracket-card-height) + 36px)',
+        }}
+      >
+        <div
+          className="flex h-full items-center justify-center"
+          style={{ gap: 'var(--bracket-gap)' }}
+        >
           {/* Left Column 1: Round of 32 (8 matches, 4 pair connectors) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {leftR32.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${r32Tops[idx]}px` }}
+                style={{ position: 'absolute', top: r32Tops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -233,11 +260,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Left Column 2: Round of 16 (4 matches, 2 pair connectors) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {leftR16.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${r16Tops[idx]}px` }}
+                style={{ position: 'absolute', top: r16Tops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -267,11 +300,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Left Column 3: Quarter-final (2 matches, 1 pair connector) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {leftQF.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${qfTops[idx]}px` }}
+                style={{ position: 'absolute', top: qfTops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -293,11 +332,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Left Column 4: Semi-final (1 match) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {leftSF.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${sfTops[idx]}px` }}
+                style={{ position: 'absolute', top: sfTops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -312,10 +357,19 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Center Column: Centerpiece (Finalist, Champion, Trophy and Logo) */}
-          <div className="relative w-[50px] h-[624px] flex flex-col items-center">
+          <div
+            className="relative flex flex-col items-center flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {/* World Champion Title & Card */}
             <div
-              style={{ position: 'absolute', top: '120px' }}
+              style={{
+                position: 'absolute',
+                top: 'calc(1.5 * var(--step) - 32px)',
+              }}
               className="flex flex-col items-center"
             >
               <div className="text-[12px] font-condensed font-black tracking-[0.2em] text-white/90 mb-2 uppercase text-center leading-none">
@@ -324,23 +378,33 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
                 CHAMPION
               </div>
               <div
-                style={{ padding: '5px' }}
+                style={{
+                  padding: 'var(--bracket-card-padding)',
+                  width: 'var(--bracket-card-width)',
+                  height: 'var(--bracket-champ-card-height)',
+                }}
                 title={
                   championName === 'W104' ? 'Winner Match 104' : championName
                 }
-                className={`w-[50px] h-[36px] bg-[#111111] border rounded-[10px] flex items-center justify-center transition-all duration-300 shadow-[4px_4px_8px_rgba(0,0,0,0.6),-2px_-2px_6px_rgba(255,255,255,0.015)] ${
+                className={`bg-[#111111] border rounded-[10px] flex items-center justify-center transition-all duration-300 shadow-[4px_4px_8px_rgba(0,0,0,0.6),-2px_-2px_6px_rgba(255,255,255,0.015)] ${
                   isChampPlaceholder
-                    ? 'border-[#FFD700]/20'
+                    ? 'border-[#FFD700]/45'
                     : 'border-[#FFD700] shadow-[0_0_15px_rgba(255,215,0,0.25)]'
                 }`}
               >
-                <div className="w-[36px] h-[24px] relative">
+                <div
+                  style={{
+                    width: 'var(--bracket-flag-width)',
+                    height: 'var(--bracket-flag-height)',
+                  }}
+                  className="relative"
+                >
                   {isChampPlaceholder ? (
-                    <div className="w-full h-full rounded-[4px] bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-[9px] font-bold text-white/40 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
+                    <div className="w-full h-full rounded-tl-[8px] rounded-br-[8px] bg-[#1a1a1a] border border-white/20 flex items-center justify-center text-[9px] font-bold text-white/70 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
                       ?
                     </div>
                   ) : (
-                    <div className="w-full h-full relative overflow-hidden rounded-[3px] border border-black/30">
+                    <div className="w-full h-full relative overflow-hidden rounded-tl-[8px] rounded-br-[8px] border border-black/30">
                       {champCC ? (
                         <img
                           src={`https://flagcdn.com/w40/${champCC}.png`}
@@ -360,35 +424,55 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
 
             {/* Connecting Vertical line from Champion to Final Card */}
             <div
-              style={{ position: 'absolute', top: '198px' }}
-              className="h-[82px] w-[2px] bg-gradient-to-b from-[#FFD700] to-white/10"
+              style={{
+                position: 'absolute',
+                top: 'calc(1.5 * var(--step) + var(--bracket-champ-card-height) + 10px)',
+                height:
+                  'calc(2 * var(--step) - var(--bracket-champ-card-height) - 10px)',
+              }}
+              className="w-[2px] bg-gradient-to-b from-[#FFD700] to-white/10"
             />
 
             {/* Final Match Card */}
-            <div style={{ position: 'absolute', top: '280px' }}>
+            <div
+              style={{ position: 'absolute', top: 'calc(3.5 * var(--step))' }}
+            >
               <BracketMatchCard match={finalMatch} data={data} />
             </div>
 
             {/* Bronze Final Card (Horizontally side-by-side flags) */}
             {thirdPlaceMatch && (
               <div
-                style={{ position: 'absolute', top: '368px' }}
+                style={{
+                  position: 'absolute',
+                  top: 'calc(4.5 * var(--step) + 8px)',
+                }}
                 className="flex flex-col items-center gap-1 mt-1"
               >
                 <div
-                  style={{ padding: '5px' }}
+                  style={{
+                    padding: 'var(--bracket-card-padding)',
+                    width: 'calc(2 * var(--bracket-flag-width) + 4px)',
+                    height: 'var(--bracket-champ-card-height)',
+                  }}
                   title={`${formatTeamName(thirdPlaceMatch.home)} vs ${formatTeamName(thirdPlaceMatch.away)}\nVenue: ${thirdPlaceMatch.venue}`}
-                  className="w-[84px] h-[36px] bg-[#111111] border border-white/5 rounded-[10px] flex items-center justify-between shadow-[4px_4px_8px_rgba(0,0,0,0.6),-2px_-2px_6px_rgba(255,255,255,0.015)] hover:translate-y-[-1px] transition-all duration-200"
+                  className="bg-[#111111] border border-white/18 rounded-[10px] flex items-center justify-between shadow-[4px_4px_8px_rgba(0,0,0,0.6),-2px_-2px_6px_rgba(255,255,255,0.015)] hover:translate-y-[-1px] transition-all duration-200"
                 >
-                  <div className="w-[34px] h-[22px] relative">
+                  <div
+                    style={{
+                      width: 'calc(var(--bracket-flag-width) - 6px)',
+                      height: 'calc(var(--bracket-flag-height) - 4px)',
+                    }}
+                    className="relative"
+                  >
                     {thirdPlaceMatch.home === 'TBD' ||
                     thirdPlaceMatch.home.startsWith('W') ||
                     thirdPlaceMatch.home.startsWith('RU') ? (
-                      <div className="w-full h-full rounded-[4px] bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-[9px] font-bold text-white/40 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
+                      <div className="w-full h-full rounded-tl-[8px] rounded-br-[8px] bg-[#1a1a1a] border border-white/20 flex items-center justify-center text-[9px] font-bold text-white/70 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
                         ?
                       </div>
                     ) : (
-                      <div className="w-full h-full relative overflow-hidden rounded-[3px] border border-black/30">
+                      <div className="w-full h-full relative overflow-hidden rounded-tl-[8px] rounded-br-[8px] border border-black/30">
                         {flagEmojiToCountryCode(
                           data.flags[thirdPlaceMatch.home],
                         ) ? (
@@ -405,15 +489,21 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
                       </div>
                     )}
                   </div>
-                  <div className="w-[34px] h-[22px] relative">
+                  <div
+                    style={{
+                      width: 'calc(var(--bracket-flag-width) - 6px)',
+                      height: 'calc(var(--bracket-flag-height) - 4px)',
+                    }}
+                    className="relative"
+                  >
                     {thirdPlaceMatch.away === 'TBD' ||
                     thirdPlaceMatch.away.startsWith('W') ||
                     thirdPlaceMatch.away.startsWith('RU') ? (
-                      <div className="w-full h-full rounded-[4px] bg-[#1a1a1a] border border-white/5 flex items-center justify-center text-[9px] font-bold text-white/40 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
+                      <div className="w-full h-full rounded-tl-[8px] rounded-br-[8px] bg-[#1a1a1a] border border-white/20 flex items-center justify-center text-[9px] font-bold text-white/70 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5)]">
                         ?
                       </div>
                     ) : (
-                      <div className="w-full h-full relative overflow-hidden rounded-[3px] border border-black/30">
+                      <div className="w-full h-full relative overflow-hidden rounded-tl-[8px] rounded-br-[8px] border border-black/30">
                         {flagEmojiToCountryCode(
                           data.flags[thirdPlaceMatch.away],
                         ) ? (
@@ -431,7 +521,7 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
                     )}
                   </div>
                 </div>
-                <div className="text-[7px] font-condensed font-black tracking-[0.1em] text-white/30 uppercase">
+                <div className="text-[7px] font-condensed font-black tracking-[0.1em] text-white/60 uppercase">
                   BRONZE FINAL
                 </div>
               </div>
@@ -461,11 +551,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Right Column 4: Semi-final (1 match) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {rightSF.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${sfTops[idx]}px` }}
+                style={{ position: 'absolute', top: sfTops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -480,11 +576,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Right Column 3: Quarter-final (2 matches, 1 pair connector) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {rightQF.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${qfTops[idx]}px` }}
+                style={{ position: 'absolute', top: qfTops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -506,11 +608,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Right Column 2: Round of 16 (4 matches, 2 pair connectors) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {rightR16.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${r16Tops[idx]}px` }}
+                style={{ position: 'absolute', top: r16Tops[idx] }}
               >
                 <BracketMatchCard
                   match={match}
@@ -540,11 +648,17 @@ export default function KnockoutBracket({ data }: KnockoutBracketProps) {
           </div>
 
           {/* Right Column 1: Round of 32 (8 matches, 4 pair connectors) */}
-          <div className="relative w-[50px] h-[624px]">
+          <div
+            className="relative flex-shrink-0"
+            style={{
+              width: 'var(--bracket-card-width)',
+              height: 'calc(7 * var(--step) + var(--bracket-card-height))',
+            }}
+          >
             {rightR32.map((match, idx) => (
               <div
                 key={match.id}
-                style={{ position: 'absolute', top: `${r32Tops[idx]}px` }}
+                style={{ position: 'absolute', top: r32Tops[idx] }}
               >
                 <BracketMatchCard
                   match={match}

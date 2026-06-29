@@ -71,7 +71,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] md:w-[36px] md:h-[24px] lg:w-[40px] lg:h-[26px] object-cover rounded-tl-[8px] rounded-br-[8px] border border-white/20 shadow-sm"
             />
           )}
           <span className={`${homeCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
@@ -95,7 +95,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] md:w-[36px] md:h-[24px] lg:w-[40px] lg:h-[26px] object-cover rounded-tl-[8px] rounded-br-[8px] border border-white/20 shadow-sm"
             />
           )}
           <span className={`${awayCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
@@ -146,7 +146,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] md:w-[36px] md:h-[24px] lg:w-[40px] lg:h-[26px] object-cover rounded-tl-[8px] rounded-br-[8px] border border-white/20 shadow-sm"
             />
           )}
           <span className={`${homeCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
@@ -170,7 +170,7 @@ export default function MatchCard({ match, data, viewMode = 'classic' }: MatchCa
                 const fallback = e.currentTarget.nextElementSibling;
                 if (fallback) fallback.classList.remove('hidden');
               }}
-              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] object-cover rounded-[2px] border border-white/20 shadow-sm"
+              className="w-[24px] h-[16px] sm:w-[32px] sm:h-[20px] md:w-[36px] md:h-[24px] lg:w-[40px] lg:h-[26px] object-cover rounded-tl-[8px] rounded-br-[8px] border border-white/20 shadow-sm"
             />
           )}
           <span className={`${awayCC ? 'hidden' : ''} text-xs sm:text-sm leading-none`}>
