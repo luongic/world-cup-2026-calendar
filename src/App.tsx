@@ -90,7 +90,7 @@ const data: MatchData = {
 };
 
 export default function App() {
-  const [viewMode, setViewMode] = useState<'classic' | 'compact' | 'draw'>(
+  const [viewMode, setViewMode] = useState<'classic' | 'compact' | 'bracket'>(
     'compact',
   );
 
@@ -134,7 +134,7 @@ export default function App() {
           <div className="flex flex-col sm:items-end gap-3">
             {/* View Selector Toggle */}
             <div className="flex bg-white/[0.03] border border-white/[0.08] p-0.5 sm:p-1 rounded-full gap-0.5 sm:gap-1">
-              {(['classic', 'compact', 'draw'] as const).map((mode) => (
+              {(['classic', 'compact', 'bracket'] as const).map((mode) => (
                 <button
                   key={mode}
                   onClick={() => setViewMode(mode)}
@@ -165,7 +165,7 @@ export default function App() {
           </div>
         </header>
 
-        {viewMode !== 'draw' ? (
+        {viewMode !== 'bracket' ? (
           <CalendarMonth
             matches={data.matches.filter(
               (m) =>
